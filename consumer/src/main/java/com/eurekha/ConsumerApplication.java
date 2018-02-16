@@ -1,17 +1,19 @@
 package com.eurekha;
 
 import java.io.IOException;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestClientException;
 
 import com.eurekha.controller.ConsumerController;
 
 @SpringBootApplication
 public class ConsumerApplication {
+	
+	@Autowired
+	ConsumerController consumerController;
 
 	
 	public static void main(String[] args) throws RestClientException, IOException {
@@ -21,9 +23,4 @@ public class ConsumerApplication {
 		consumerController.getStudentinfo();		
 	}
 	
-	@Bean
-	public ConsumerController consumerController() {
-		
-		return new ConsumerController();
-	}
 }
